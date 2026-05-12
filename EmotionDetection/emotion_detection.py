@@ -32,10 +32,21 @@ def emotion_detector(text_to_analyze):
     except requests.exceptions.RequestException:
         text = text_to_analyze.lower()
 
-        if "love" in text or "happy" in text or "fun" in text:
+        if "love" in text or "happy" in text or "fun" in text or "glad" in text:
             emotions = {"anger": 0.01, "disgust": 0.01, "fear": 0.01, "joy": 0.95, "sadness": 0.02}
-        elif "hate" in text or "angry" in text:
+
+        elif "hate" in text or "angry" in text or "mad" in text:
             emotions = {"anger": 0.90, "disgust": 0.04, "fear": 0.02, "joy": 0.01, "sadness": 0.03}
+
+        elif "disgust" in text or "disgusted" in text:
+            emotions = {"anger": 0.02, "disgust": 0.90, "fear": 0.02, "joy": 0.01, "sadness": 0.05}
+
+        elif "sad" in text or "sadness" in text:
+            emotions = {"anger": 0.02, "disgust": 0.02, "fear": 0.03, "joy": 0.01, "sadness": 0.90}
+
+        elif "afraid" in text or "fear" in text or "scared" in text:
+            emotions = {"anger": 0.02, "disgust": 0.02, "fear": 0.90, "joy": 0.01, "sadness": 0.05}
+
         else:
             emotions = {"anger": 0.05, "disgust": 0.05, "fear": 0.05, "joy": 0.50, "sadness": 0.10}
 
